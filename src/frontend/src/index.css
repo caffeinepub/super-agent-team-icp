@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* Cyberpunk dark theme */
+    --background: 0.08 0.018 242;
+    --foreground: 0.94 0.025 220;
+    --card: 0.11 0.022 240;
+    --card-foreground: 0.94 0.025 220;
+    --popover: 0.13 0.025 238;
+    --popover-foreground: 0.94 0.025 220;
+    --primary: 0.87 0.17 198;
+    --primary-foreground: 0.08 0.018 242;
+    --secondary: 0.15 0.03 236;
+    --secondary-foreground: 0.94 0.025 220;
+    --muted: 0.14 0.025 238;
+    --muted-foreground: 0.62 0.04 222;
+    --accent: 0.87 0.19 148;
+    --accent-foreground: 0.08 0.018 242;
+    --destructive: 0.62 0.26 28;
+    --destructive-foreground: 0.97 0.01 220;
+    --border: 0.22 0.045 232;
+    --input: 0.18 0.035 236;
+    --ring: 0.87 0.17 198;
+    --chart-1: 0.87 0.17 198;
+    --chart-2: 0.87 0.19 148;
+    --chart-3: 0.65 0.32 320;
+    --chart-4: 0.45 0.28 288;
+    --chart-5: 0.75 0.15 60;
+    --sidebar: 0.1 0.02 240;
+    --sidebar-foreground: 0.94 0.025 220;
+    --sidebar-primary: 0.87 0.17 198;
+    --sidebar-primary-foreground: 0.08 0.018 242;
+    --sidebar-accent: 0.15 0.03 236;
+    --sidebar-accent-foreground: 0.94 0.025 220;
+    --sidebar-border: 0.22 0.045 232;
+    --sidebar-ring: 0.87 0.17 198;
+    /* Custom neon tokens */
+    --cyan: 0.87 0.17 198;
+    --neon-green: 0.87 0.19 148;
+    --magenta: 0.65 0.32 320;
+    --purple: 0.45 0.28 288;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    background-image: linear-gradient(
+        rgba(24, 231, 255, 0.03) 1px,
+        transparent 1px
+      ), linear-gradient(90deg, rgba(24, 231, 255, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.1 0.022 240);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.22 0.045 232);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.87 0.17 198 / 0.4);
+  }
+}
+
+@layer utilities {
+  .neon-cyan {
+    color: oklch(0.87 0.17 198);
+    text-shadow: 0 0 10px oklch(0.87 0.17 198 / 0.6), 0 0 20px
+      oklch(0.87 0.17 198 / 0.3);
+  }
+  .neon-green {
+    color: oklch(0.87 0.19 148);
+    text-shadow: 0 0 10px oklch(0.87 0.19 148 / 0.6), 0 0 20px
+      oklch(0.87 0.19 148 / 0.3);
+  }
+  .neon-magenta {
+    color: oklch(0.65 0.32 320);
+    text-shadow: 0 0 10px oklch(0.65 0.32 320 / 0.6);
+  }
+  .border-neon-cyan {
+    border-color: oklch(0.87 0.17 198 / 0.5);
+    box-shadow: 0 0 8px oklch(0.87 0.17 198 / 0.2), inset 0 0 8px
+      oklch(0.87 0.17 198 / 0.05);
+  }
+  .border-neon-green {
+    border-color: oklch(0.87 0.19 148 / 0.5);
+    box-shadow: 0 0 8px oklch(0.87 0.19 148 / 0.2);
+  }
+  .card-dark {
+    background: oklch(0.11 0.022 240);
+    border: 1px solid oklch(0.22 0.045 232);
+  }
+  .glow-cyan {
+    box-shadow: 0 0 20px oklch(0.87 0.17 198 / 0.3), 0 0 40px
+      oklch(0.87 0.17 198 / 0.1);
+  }
+  .glow-magenta {
+    box-shadow: 0 0 20px oklch(0.65 0.32 320 / 0.5), 0 0 40px
+      oklch(0.45 0.28 288 / 0.3);
+  }
+  .text-heading {
+    color: oklch(0.94 0.025 220);
+  }
+  .text-body {
+    color: oklch(0.8 0.03 222);
+  }
+  .text-muted-custom {
+    color: oklch(0.62 0.04 222);
+  }
+  .font-mono-custom {
+    font-family: "JetBrains Mono", monospace;
+  }
+}

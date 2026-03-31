@@ -1,0 +1,85 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Skill = 
+ record {
+   agentName: text;
+   jobsDone: nat;
+   score: float64;
+   skillName: text;
+ };
+type LogEntry = 
+ record {
+   message: text;
+   timestamp: int;
+ };
+type Lesson = 
+ record {
+   agentName: text;
+   jobId: text;
+   learnedAt: int;
+   lesson: text;
+ };
+type Job = 
+ record {
+   assignedTo: text;
+   completedAt: int;
+   description: text;
+   earnedE8s: nat;
+   foundAt: int;
+   id: text;
+   jobType: text;
+   platform: text;
+   result: text;
+   status: text;
+   title: text;
+   url: text;
+ };
+type Goal = 
+ record {
+   emoji: text;
+   name: text;
+   savedE8s: nat;
+   targetE8s: nat;
+ };
+type EarningEntry = 
+ record {
+   amountE8s: nat;
+   jobId: text;
+   loggedAt: int;
+   wallet: text;
+ };
+service : {
+  addJob: (title: text, desc: text, platform: text, jobType: text, url:
+   text) -> ();
+  getActivityLog: () -> (vec LogEntry) query;
+  getEarnings: () -> (vec EarningEntry) query;
+  getGoals: () -> (vec Goal) query;
+  getJobs: () -> (vec Job) query;
+  getLessons: (a: text) -> (vec Lesson) query;
+  getSkills: () -> (vec Skill) query;
+  getTotalEarned: () -> (nat) query;
+  getWalletPrincipal: () -> (text) query;
+  runCycle: () -> (text);
+  setClaudeApiKey: (k: text) -> ();
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+}
